@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>L-System Viewer (Modular)</title>
+  <style>
+    #controls { margin-bottom:8px; }
+    input { width:200px; }
+  </style>
+  <script src="https://jaimelopezgarcia.github.io/lsystemsanimated/lsystemsanimated.js"></script>
+  <script src="https://jaimelopezgarcia.github.io/lsystemsanimated/lsystems_mod.js"></script>
+</head>
+<body>
+  <div id="controls">
+    F rule: <input id="ruleF" value="FF"><br>
+    X rule: <input id="ruleX" value="F[+X]F[-X]+X"><br>
+    <button id="start">Start Animation</button>
+  </div>
+  <canvas id="canvas" width="800" height="600" style="border:1px solid #666"></canvas>
+<script>
+  // Disable the button until the module is ready
+  document.getElementById('start').disabled = true;
+
+  // Wait for Module to be ready
+  Module.onRuntimeInitialized = function() {
+    document.getElementById('start').disabled = false;
+    document.getElementById('start').onclick = function() {
+      var F_value = document.getElementById('ruleF').value;
+      var X_value = document.getElementById('ruleX').value;
+      runLSystemAnimation('canvas', F_value, X_value);
+    };
+  };
+</script>
+</body>
+</html>
