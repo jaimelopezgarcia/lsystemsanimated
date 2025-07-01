@@ -7,13 +7,20 @@
     #controls { margin-bottom:8px; }
     input { width:200px; }
   </style>
-  <script src="https://jaimelopezgarcia.github.io/lsystemsanimated/lsystemsanimated.js"></script>
+
+  <script src="https://jaimelopezgarcia.github.io/lsystemsanimated/build/lsystemsanimated.js"></script>
   <script src="https://jaimelopezgarcia.github.io/lsystemsanimated/lsystems_mod.js"></script>
+
+    <!--
+  <script src="build/lsystemsanimated.js"></script>
+  <script src="lsystems_mod.js"></script>
+-->
 </head>
 <body>
   <div id="controls">
     F rule: <input id="ruleF" value="FF"><br>
     X rule: <input id="ruleX" value="F[+X]F[-X]+X"><br>
+    iterations: <input id="iterations" value="5"><br>
     <button id="start">Start Animation</button>
   </div>
   <canvas id="canvas" width="800" height="600" style="border:1px solid #666"></canvas>
@@ -27,7 +34,16 @@
     document.getElementById('start').onclick = function() {
       var F_value = document.getElementById('ruleF').value;
       var X_value = document.getElementById('ruleX').value;
-      runLSystemAnimation('canvas', F_value, X_value);
+      var iterations = parseInt(document.getElementById('iterations').value, 10);
+      if (iterations> 8) {
+        alert("Please enter a number of iterations less than or equal to 12.");
+        return;
+      }
+      if (isNaN(iterations) || iterations <= 0) {
+        alert("Please enter a valid number of iterations.");
+        return;
+      }
+      runLSystemAnimation('canvas', F_value, X_value,iterations);
     };
 
       document.getElementById('start').click();

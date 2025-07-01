@@ -74,6 +74,17 @@ extern "C" {
         std::unordered_map<char, std::string> axiom_rules = parse_rules(keys, values);
         float angleIncrement = 20.0f; // Angle increment in degrees
         float length = 10.0f; // Length of each segment
+
+        //lets print aximo ruls angle icnrement length and iterations
+        std::cout << "Axiom Rules: " << std::endl;
+        for (const auto& rule : axiom_rules) {
+            std::cout << rule.first << " -> " << rule.second << std::endl;
+        }
+        std::cout << "Angle Increment: " << angleIncrement << " degrees" << std::endl;
+        std::cout << "Length: " << length << std::endl;
+        std::cout << "Axiom: " << axiom << std::endl;
+        std::cout << "Iterations: " << iterations << std::endl;
+        
         lsystems::LSystemPhysics* lsysptr = new lsystems::LSystemPhysics(axiom_rules, angleIncrement, length);
         lsysptr->initialize(axiom, iterations, 1); // axiom
 
