@@ -30,8 +30,7 @@
     ];
   };
 
-  global.runLSystemAnimation = function(canvasId, F_value, X_value) {
-    // Instead of throwing, queue the animation to start after Module is ready
+  global.runLSystemAnimation = function(canvasId, F_value, X_value, iterations) {
     function startWhenReady() {
       const create   = Module.cwrap('lsystem_physics_create','number',['string','string','string','number']);
       const step     = Module.cwrap('lsystem_physics_step'  ,'number',['number','number','number','number','number','number','number']);
@@ -39,7 +38,7 @@
       const canvas = document.getElementById(canvasId);
       const ctx    = canvas.getContext('2d');
       const W = canvas.width, H = canvas.height;
-      let lsysPtr = create("F\nX", F_value + "\n" + X_value, "X", 5);
+      let lsysPtr = create("F\nX", F_value + "\n" + X_value, "X", iterations);
       let outSizePtr = Module._malloc(4);
       let scaler = new Scaler2D();
       let firstFrame = true;
