@@ -23,6 +23,7 @@ This project visualizes L-systems using damped oscillators with level-wise param
 Module.onRuntimeInitialized = function() {
   var F_value = "FF";
   var X_value = "F[+X]F[-X]+X";
-  runLSystemAnimation("main-canvas", F_value, X_value);
+  var iterations = 5;
+  runLSystemAnimation("main-canvas", F_value, X_value,iterations);
 };
 </script>
