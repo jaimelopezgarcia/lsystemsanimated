@@ -4,12 +4,14 @@
 
 This project visualizes L-systems using damped oscillators with level-wise parameters, compiled to WebAssembly for smooth real-time animation in the browser.
 
+
+
 ## 🌱 Try it Live
 
 👉 [Test the L-System Viewer here](https://jaimelopezgarcia.github.io/lsystemsanimated/index.html)
 
-## Features
 
+![L-System Animation Demo](https://jaimelopezgarcia.github.io/lsystemsanimated/lsystem_animated.gif)
 
 ## Example Usage
 
